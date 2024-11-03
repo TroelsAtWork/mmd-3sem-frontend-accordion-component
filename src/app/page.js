@@ -1,3 +1,9 @@
+import Accordion from "./components/Accordion";
+
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <Accordion />
+    </div>
+  );
 }
