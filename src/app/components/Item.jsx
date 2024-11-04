@@ -1,15 +1,16 @@
-"use client";
 import { IoCloseOutline } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
-import { useState } from "react";
 
-const Item = () => {
-  const [isActive, setIsActive] = useState(false);
+const Item = ({ activeIndex, setActiveIndex, index }) => {
   return (
     <div className="py-4">
       <header>
         <button
-          onClick={() => setIsActive(!isActive)}
+          onClick={() => {
+            activeIndex === index
+              ? setActiveIndex(index)
+              : setActiveIndex(index);
+          }}
           className="flex items-center justify-between w-full text-left font-semibold py-2"
         >
           <span className="text-black">
@@ -17,7 +18,7 @@ const Item = () => {
             subscription?
           </span>
           <span className="ml-8 self-start">
-            {isActive ? (
+            {activeIndex === index ? (
               <IoCloseOutline className="text-blue-900 text-2xl" />
             ) : (
               <IoRemove className="text-blue-900 text-2xl" />
@@ -26,7 +27,7 @@ const Item = () => {
         </button>
       </header>
 
-      {isActive && (
+      {activeIndex === index && (
         <section className="text-sm text-slate-600">
           <p className="pb-3">
             If you go over your organization's or user limit, a member of the
