@@ -1,15 +1,14 @@
 import { IoCloseOutline } from "react-icons/io5";
 import { IoRemove } from "react-icons/io5";
 
-const Item = ({ activeIndex, setActiveIndex, index }) => {
+const Item = ({ index, activeIndex, setActiveIndex }) => {
   return (
     <div className="py-4">
       <header>
         <button
           onClick={() => {
-            activeIndex === index
-              ? setActiveIndex(index)
-              : setActiveIndex(index);
+            setActiveIndex(index);
+            activeIndex === index ? setActiveIndex(0) : setActiveIndex(index);
           }}
           className="flex items-center justify-between w-full text-left font-semibold py-2"
         >
@@ -26,7 +25,6 @@ const Item = ({ activeIndex, setActiveIndex, index }) => {
           </span>
         </button>
       </header>
-
       {activeIndex === index && (
         <section className="text-sm text-slate-600">
           <p className="pb-3">
